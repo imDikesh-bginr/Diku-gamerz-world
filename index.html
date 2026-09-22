@@ -137,6 +137,13 @@
       background: #0d0d15;
     }
 
+    .video-card .thumb-wrap.yt-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e1e2f, #0d0d15);
+    }
+
     .video-card img {
       width: 100%;
       height: 100%;
@@ -218,46 +225,52 @@
   </div>
 
   <div class="updates">
-    <a href="https://www.youtube.com/@DikuGamerz5" target="_blank" id="yt-latest" class="video-card">
-      <div class="thumb-wrap">
-        <img id="yt-thumb" src="" alt="Latest video thumbnail">
+    <a href="https://www.youtube.com/@DikuGamerz5/videos" target="_blank" id="yt-latest" class="video-card">
+      <div class="thumb-wrap yt-fallback" id="yt-thumb-wrap">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="#ff0000"><path d="M23 12s0-3.6-.5-5.3c-.3-1-1-1.7-2-2C18.6 4.2 12 4.2 12 4.2s-6.6 0-8.5.5c-1 .3-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3c.3 1 1 1.7 2 2 1.9.5 8.5.5 8.5.5s6.6 0 8.5-.5c1-.3 1.7-1 2-2 .5-1.7.5-5.3.5-5.3zM9.8 15.5V8.5l6.4 3.5-6.4 3.5z"/></svg>
         <div class="play-badge">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
       </div>
       <div class="video-info">
         <div class="video-label">LATEST FROM YOUTUBE</div>
-        <div class="video-title" id="yt-title">Loading latest video…</div>
+        <div class="video-title" id="yt-title">Watch my newest upload →</div>
       </div>
     </a>
   </div>
 
   <script>
-    // Auto-fetch the latest YouTube video's link, thumbnail and title
-    const channelId = "UCOY1Nsdy6Obrukc9HHuB5ww";
-    const rssUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-      `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-    )}`;
+    // Official YouTube Data API — reliable, no proxy needed.
+    // Key is restricted to this site's domain in Google Cloud Console.
+    const YT_API_KEY = "AIzaSyBmbDZ67BXa20KZi-jxUduDuZY0cIZLOag";
+    const CHANNEL_ID = "UCOY1Nsdy6Obrukc9HHuB5ww";
+    const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`;
 
-    fetch(rssUrl)
-      .then((res) => res.text())
-      .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
+    fetch(apiUrl)
+      .then((res) => res.json())
       .then((data) => {
-        const entry = data.querySelector("entry");
-        if (!entry) return;
+        if (!data.items || !data.items.length) throw new Error("No videos found");
 
-        const link = entry.querySelector("link").getAttribute("href");
-        const title = entry.querySelector("title").textContent;
-        const thumb = entry.getElementsByTagName("media:thumbnail")[0];
+        const video = data.items[0];
+        const videoId = video.id.videoId;
+        const title = video.snippet.title;
+        const thumb = video.snippet.thumbnails.high.url;
 
-        document.getElementById("yt-latest").href = link;
+        document.getElementById("yt-latest").href = `https://www.youtube.com/watch?v=${videoId}`;
         document.getElementById("yt-title").textContent = title;
-        if (thumb) {
-          document.getElementById("yt-thumb").src = thumb.getAttribute("url");
-        }
+
+        const wrap = document.getElementById("yt-thumb-wrap");
+        wrap.classList.remove("yt-fallback");
+        wrap.innerHTML = `
+          <img src="${thumb}" alt="${title}">
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        `;
       })
-      .catch(() => {
-        document.getElementById("yt-title").textContent = "Check out my latest video";
+      .catch((err) => {
+        console.error("YouTube API fetch failed:", err);
+        // Falls back to the red icon + channel link already in the HTML above
       });
   </script>
 

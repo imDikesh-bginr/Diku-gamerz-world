@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DIKU_GAMERZ's World</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #1a1a2e, #0d0d15);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    /* The glowing zoom title */
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      color: #00f7ff;
+      cursor: default;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .title:hover {
+      transform: scale(1.15);
+      text-shadow:
+        0 0 10px #00f7ff,
+        0 0 25px #00f7ff,
+        0 0 45px #00f7ff;
+    }
+
+    .welcome {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #cccccc;
+    }
+
+    /* Social buttons row */
+    .socials {
+      margin-top: 40px;
+      display: flex;
+      gap: 25px;
+    }
+
+    .social-btn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1e1e2f;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .social-btn svg {
+      width: 26px;
+      height: 26px;
+      fill: white;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .instagram:hover { background: #d6249f; box-shadow: 0 0 20px #d6249f; }
+    .facebook:hover  { background: #1877f2; box-shadow: 0 0 20px #1877f2; }
+    .discord:hover   { background: #5865f2; box-shadow: 0 0 20px #5865f2; }
+    .youtube:hover   { background: #ff0000; box-shadow: 0 0 20px #ff0000; }
+
+  </style>
+</head>
+<body>
+
+  <div class="title">DIKU_GAMERZ's World</div>
+  <p class="welcome">Welcome back! Pick a platform below 👇</p>
+
+  <div class="socials">
+   <a href="https://www.instagram.com/dikugamerz5" target="_blank" class="social-btn instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.4.5.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.4.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.4-.5.2-.8.4-1.2.7-.3.3-.6.7-.7 1.2-.1.3-.3.9-.4 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 1.9.2.5.4.8.7 1.2.3.3.7.6 1.2.7.3.1.9.3 1.9.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.4.5-.2.8-.4 1.2-.7.3-.3.6-.7.7-1.2.1-.3.3-.9.4-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-1.9-.2-.5-.4-.8-.7-1.2-.3-.3-.7-.6-1.2-.7-.3-.1-.9-.3-1.9-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.6a5.4 5.4 0 1 1 0 10.8 5.4 5.4 0 0 1 0-10.8zm0 1.8a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2zm5.6-2a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg>
+    </a>
+   <a href="https://www.facebook.com/dikugamerz5" target="_blank" class="social-btn facebook">
+      <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+    </a>
+    <a href="https://discord.com" target="_blank" class="social-btn discord">
+      <svg viewBox="0 0 24 24"><path d="M20.3 4.4A19.7 19.7 0 0 0 15.6 3l-.3.5c1.8.4 2.9.9 4 1.6-1.7-.8-3.3-1.2-4.9-1.4-1.3-.2-2.6-.2-3.9 0-1.6.2-3.2.6-4.9 1.4 1.1-.7 2.3-1.2 4-1.6l-.3-.5c-1.7.3-3.3.8-4.7 1.4-2.4 3.6-3 7-2.7 10.4a20 20 0 0 0 6 3l1-1.6c-.9-.3-1.7-.7-2.5-1.2.2-.1.4-.3.6-.4 4.6 2.1 9.6 2.1 14.1 0l.6.4c-.8.5-1.6.9-2.5 1.2l1 1.6a20 20 0 0 0 6-3c.4-3.9-.5-7.3-2.9-10.4zM9.7 14.6c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8zm4.6 0c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/dikugamerz5" target="_blank" class="social-btn youtube">
+      <svg viewBox="0 0 24 24"><path d="M23 12s0-3.6-.5-5.3c-.3-1-1-1.7-2-2C18.6 4.2 12 4.2 12 4.2s-6.6 0-8.5.5c-1 .3-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3c.3 1 1 1.7 2 2 1.9.5 8.5.5 8.5.5s6.6 0 8.5-.5c1-.3 1.7-1 2-2 .5-1.7.5-5.3.5-5.3zM9.8 15.5V8.5l6.4 3.5-6.4 3.5z"/></svg>
+    </a>
+  </div>
+
+</body>
+</html>
